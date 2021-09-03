@@ -1,15 +1,16 @@
 import express from 'express'
-import { mapOrder } from '*/untilities/sort'
+import { connectDB } from './config/mongodb'
+import { env } from './config/environtment'
 
 const app = express()
 
-const hostname = 'localhost'
-const port = 8080
+
+connectDB().catch(console.log)
 
 app.get('/', (req, res) => {
   res.end('<h1>Hello World</h1>')
 })
 
-app.listen(port, hostname, () => {
-  console.log(`hello thanhbxdev,Im running at ${hostname}:${port}`)
+app.listen( env.PORT, env.HOST, () => {
+  console.log(`hello thanhbxdev,Im running at ${env.HOST}:${env.PORT}`)
 })
