@@ -3,7 +3,9 @@ import { HttpStatusCode } from '../untilities/const'
 
 const creatNew = async (req, res, next) => {
   const condition = Joi.object({
-    title:Joi.string().required().min(3).max(20).trim()
+    boardId:Joi.string().required(),
+    columnId:Joi.string().required(),
+    title:Joi.string().required().min(3).max(30).trim()
   })
   try {
     await condition.validateAsync(req.body, { abortEarly:false })
@@ -15,4 +17,6 @@ const creatNew = async (req, res, next) => {
   }
 }
 
-export const BoardValidation = { creatNew }
+export const CardValidation = {
+  creatNew
+}
