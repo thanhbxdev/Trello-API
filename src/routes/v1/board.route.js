@@ -6,5 +6,6 @@ const router = express.Router()
 
 router.route('/')
   .post(BoardValidation.creatNew, BoardController.createNew)
-
+router.route('/:id')
+  .get(BoardController.getFullBoard)
 export const BoardRoutes = router
