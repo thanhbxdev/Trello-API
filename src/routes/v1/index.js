@@ -10,6 +10,9 @@ const router = express.Router()
 router.get('/status', (req, res) => res.status(HttpStatusCode.OK).json({
   status:'OK !'
 }))
+router.get('/status2', (req, res) => res.status(HttpStatusCode.OK).json({
+  status:'OK !'
+}))
 router.use('/boards', BoardRoutes)
 router.use('/columns', ColumnRoutes)
 router.use('/cards', CardRoutes)
