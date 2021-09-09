@@ -8,4 +8,5 @@ router.route('/')
   .post(BoardValidation.creatNew, BoardController.createNew)
 router.route('/:id')
   .get(BoardController.getFullBoard)
+  .put(BoardValidation.updateBoard, BoardController.updateBoard)
 export const BoardRoutes = router

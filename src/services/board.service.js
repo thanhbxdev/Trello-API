@@ -1,5 +1,7 @@
 import { BoardModel } from '../models/board.model'
 import { cloneDeep } from 'lodash'
+import { ColumnModel } from '../models/column.model'
+import { CardModel } from '../models/card.model'
 
 const createNew = async (data) => {
   try {
@@ -29,8 +31,22 @@ const getFullBoard = async (boardId) => {
     throw new Error(error)
   }
 }
-
+const updateBoard = async (id, data) => {
+  try {
+    const updateData ={
+      ...data,
+      updatedAt:Date.now()
+    }
+    if (updateData._id) delete updateData._id
+    if (updateData.columns) delete updateData.columns
+    const updatedBoard = await BoardModel.update(id, updateData)
+    return updatedBoard
+  } catch (error) {
+    throw new Error(error)
+  }
+}
 export const BoardService = {
   createNew,
-  getFullBoard
+  getFullBoard,
+  updateBoard
 }
